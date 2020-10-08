@@ -1,4 +1,5 @@
 export function authorize() {
+  // ! Change this into a real token check and remove the token only when expired
   localStorage.removeItem('SPOTIFY_HASH');
 
   const hash = window.location.hash
