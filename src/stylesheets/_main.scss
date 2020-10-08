@@ -1,8 +1,19 @@
-body {
+body,
+ul {
   margin: 0;
   padding: 0;
 }
 
+li {
+  list-style-type: none;
+}
+
 a {
   text-decoration: none;
+}
+
+.App {
+  background: #191414;
+  min-height: 100vh;
+  font-family: 'Noto Sans JP', sans-serif;
 }
