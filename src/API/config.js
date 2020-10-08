@@ -2,7 +2,10 @@ const config = {
   authEndpoint: 'https://accounts.spotify.com/authorize',
   clientID: 'dc890f54ef724b33b294884126768d55',
   clientSecret: 'a2557600c557428e97cc3f0cce7cdf1c',
-  redirectUri: 'http://localhost:3000',
+  redirectUri:
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://react-app-music.web.app',
   scopes: ['user-read-currently-playing', 'user-read-playback-state'],
 };
 
