@@ -4,9 +4,9 @@ export async function search(token, query, type) {
   const url = `https://api.spotify.com/v1/search?q=${query}&type=${type}`;
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }
+      Authorization: `Bearer ${token}`,
+    },
+  };
   const { data } = await axios.get(url, config);
 
   const result = data.artists.items.map((item) => {
@@ -37,5 +37,6 @@ export async function search(token, query, type) {
     };
   });
 
-  console.log('hihihi', result);
+  console.log(`SEARCHING ${query}...`);
+  return result;
 }

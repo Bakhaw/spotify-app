@@ -1,10 +1,12 @@
 export function authorize() {
+  localStorage.removeItem('SPOTIFY_HASH');
+
   const hash = window.location.hash
     .substring(1)
     .split('&')
     .reduce(function (initial, item) {
       if (item) {
-        var parts = item.split('=');
+        let parts = item.split('=');
         initial[parts[0]] = decodeURIComponent(parts[1]);
       }
       return initial;
@@ -12,7 +14,9 @@ export function authorize() {
 
   window.location.hash = '';
 
-    localStorage.setItem('SPOTIFY_HASH', hash.access_token)
+  if (hash.access_token) {
+    localStorage.setItem('SPOTIFY_HASH', hash.access_token);
+  }
 
   return hash;
 }
