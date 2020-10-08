@@ -36,7 +36,7 @@ function Home({ token }) {
           <div className='Home__search__header'>
             <Input
               onChange={onChange}
-              placeholder='Search...'
+              placeholder='Try "Damso"'
               value={inputValue}
             />
             <Button onClick={onSubmit} color='green' type='square'>
