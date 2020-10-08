@@ -11,10 +11,12 @@ function App() {
     const hash = API.routes.authorize();
     const _token = localStorage.SPOTIFY_HASH || hash.access_token;
 
-    console.log({ _token });
-
     if (_token) {
       setToken(_token);
+    }
+
+    if (process.env.NODE_ENV === 'development') {
+      console.log({ _token });
     }
   }
 
