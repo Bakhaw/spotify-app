@@ -1,0 +1,16 @@
+.ArtistsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__ListItem {
+    margin: 30px 0;
+
+    p {
+      margin: 0;
+      color: #fff;
+      text-align: center;
+    }
+  }
+}
