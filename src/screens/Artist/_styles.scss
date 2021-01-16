@@ -1,0 +1,32 @@
+.Artist {
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  color: #fff;
+
+  img {
+    margin-bottom: 10px;
+  }
+
+  &__Albums {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 40px 20px;
+
+    li {
+      a {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      span {
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+}
