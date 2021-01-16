@@ -1,7 +1,4 @@
-export function authorize() {
-  // ! Change this into a real token check and remove the token only when expired
-  localStorage.removeItem('SPOTIFY_HASH');
-
+function getHashFromURL() {
   const hash = window.location.hash
     .substring(1)
     .split('&')
@@ -15,9 +12,10 @@ export function authorize() {
 
   window.location.hash = '';
 
-  if (hash.access_token) {
-    localStorage.setItem('SPOTIFY_HASH', hash.access_token);
-  }
-
   return hash;
+}
+
+export function getAccessToken() {
+  const hash = getHashFromURL();
+  return hash.access_token;
 }

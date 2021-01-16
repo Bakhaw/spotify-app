@@ -1,50 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import API from '../../API';
-import { authorizeAuthURL } from '../../API/config';
+import config from '../../API/config';
 
 import ArtistsList from '../../components/ArtistsList';
 import Button from '../../components/Button';
-import Input from '../../components/Input';
 
-import searchIcon from '../../icons/icon-search.svg';
+import SearchHeader from './SearchHeader';
 
-function Home({ token }) {
-  const [inputValue, setInputValue] = useState('');
-  const [data, setData] = useState([]);
+function Home() {
+  const [searchResults, setSearchResults] = useState([]);
+  const [accessToken, setAccessToken] = useState(
+    localStorage.getItem('SPOTIFY_ACCESS_TOKEN')
+  );
 
-  function onChange(e) {
-    setInputValue(e.target.value);
+  function loadToken() {
+    if (window.location.hash.includes('#access_token')) {
+      const _token = API.routes.getAccessToken();
+
+      localStorage.setItem('SPOTIFY_ACCESS_TOKEN', _token);
+      setAccessToken(_token);
+    }
   }
 
-  async function onSubmit() {
-    const searchResults = await API.routes.search(token, inputValue, 'artist');
-    setData(searchResults);
-
-    console.log(searchResults);
+  async function searchArtist(query) {
+    const searchResults = await API.routes.search(query, 'artist', accessToken);
+    setSearchResults(searchResults);
   }
+
+  useEffect(() => {
+    loadToken();
+  }, []);
 
   return (
     <div className='Home'>
-      {!token && (
-        <Button onClick={() => (window.location.href = authorizeAuthURL)}>
+      {!accessToken && (
+        <Button
+          onClick={() => (window.location.href = config.AUTHORIZE_AUTH_URL)}
+        >
           LOG IN
         </Button>
       )}
-      {token && (
+      {accessToken && (
         <div className='Home__search'>
-          <div className='Home__search__header'>
-            <Input
-              onChange={onChange}
-              placeholder='Try "Damso"'
-              value={inputValue}
-            />
-            <Button onClick={onSubmit} color='green' type='square'>
-              <img alt='Search' src={searchIcon} />
-            </Button>
-          </div>
-
-          <ArtistsList data={data} />
+          <SearchHeader searchArtist={searchArtist} />
+          <ArtistsList data={searchResults} />
         </div>
       )}
     </div>
