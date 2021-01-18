@@ -44,7 +44,7 @@ function Home() {
       {accessToken && (
         <div className='Home__search'>
           <SearchHeader searchArtist={searchArtist} />
-          <ArtistsList data={searchResults} />
+          {/* <ArtistsList data={searchResults} /> */}
         </div>
       )}
     </div>

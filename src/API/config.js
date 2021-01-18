@@ -12,7 +12,7 @@ const {
 const authQueryParams = {
   redirectUri:
     NODE_ENV === 'development' ? REACT_APP_APP_URL_DEV : REACT_APP_APP_URL_PROD,
-  scopes: ['user-read-currently-playing', 'user-read-playback-state'],
+  scopes: ['user-read-recently-played', 'user-read-currently-playing', 'user-read-playback-state'],
 };
 
 const authorizeAuthURL =
