@@ -18,15 +18,18 @@ function SearchHeader({ searchArtist }) {
 
   return (
     <div className='Home__search__header'>
+      {/* <Button onClick={onSubmit} color='green' type='square'>
+        <img alt='Search' src={searchIcon} />
+      </Button> */}
+      
+      <img alt='Search' src={searchIcon} />
+      
       <Input
         onChange={onChange}
         onSubmit={onSubmit}
         placeholder='Try "Damso"'
         value={inputValue}
       />
-      <Button onClick={onSubmit} color='green' type='square'>
-        <img alt='Search' src={searchIcon} />
-      </Button>
     </div>
   );
 }
