@@ -11,7 +11,7 @@ function Router() {
       <Switch>
         <Route path='/artist/:artistID/album/:albumID' component={Album} />
         <Route path='/artist/:artistID' component={Artist} />
-        <Route path='/' component={Home} />
+        <Route exact path='/' component={Home} />
       </Switch>
     </BrowserRouter>
   );

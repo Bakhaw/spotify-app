@@ -5,11 +5,10 @@ import config from '../../API/config';
 
 import ArtistsList from '../../components/ArtistsList';
 import Button from '../../components/Button';
-
-import SearchHeader from './SearchHeader';
+import SearchInput from '../../components/SearchInput';
 
 function Home() {
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState(null);
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem('SPOTIFY_ACCESS_TOKEN')
   );
@@ -41,10 +40,12 @@ function Home() {
           LOG IN
         </Button>
       )}
+
       {accessToken && (
         <div className='Home__search'>
-          <SearchHeader searchArtist={searchArtist} />
-          {/* <ArtistsList data={searchResults} /> */}
+          <SearchInput searchArtist={searchArtist} />
+
+          {searchResults && <ArtistsList data={searchResults} />}
         </div>
       )}
     </div>

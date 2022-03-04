@@ -1,32 +1,4 @@
 .Home {
   min-height: 100vh;
   padding: 30px 20px 0 20px;
-  border: 2px solid red;
-
-  &__search {
-    background: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid #ebedf4;
-    border-radius: 50px;
-
-    &__header {
-      display: grid;
-      grid-template-columns: 15% 85%;
-      align-items: center;
-      height: 50px;
-      width: 100%;
-
-      img {
-        height: 25px;
-        width: 25px;
-        margin-left: 15px;
-      }
-
-      input {
-        border-radius: 50px;
-      }
-    }
-  }
 }

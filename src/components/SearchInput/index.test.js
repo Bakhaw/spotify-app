@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Input from '.';
+import SearchInput from '.';
 
-test('components/Input/', () => {
-  const { container } = render(<Input />);
+test('components/SearchInput/', () => {
+  const { container } = render(<SearchInput />);
   expect(container.firstChild).toMatchSnapshot();
-})
+});
