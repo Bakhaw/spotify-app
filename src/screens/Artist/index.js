@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import API from '../../API';
 
-import ArtistCard from '../../components/ArtistCard';
 import Avatar from '../../components/Avatar';
 
 function Artist({ match }) {
@@ -39,7 +38,7 @@ function Artist({ match }) {
 
   return (
     <div className='Artist'>
-      <ArtistCard artist={artistInfos} />
+      <Avatar artist={artistInfos} />
 
       <ul className='Artist__Albums'>
         {artistAlbums.map((album) => (
@@ -47,7 +46,7 @@ function Artist({ match }) {
             <Link to={`/artist/${artistID}/album/${album.id}`}>
               <Avatar artist={album} />
               <span>{album.name}</span>
-              <span>{album.release_date}</span>
+              <span>{album.release_date_shorten}</span>
               <span>{album.total_tracks} tracks</span>
             </Link>
           </li>

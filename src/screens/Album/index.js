@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import API from '../../API';
-import ArtistCard from '../../components/ArtistCard';
+import HeaderWithBanner from '../../components/HeaderWithBanner';
 
 function Album({ match }) {
   const { albumID, artistID } = match.params;
@@ -24,12 +24,16 @@ function Album({ match }) {
     getAlbum();
   }, []);
 
-  if (!artist) return <p>Loading...</p>;
+  if (!artist || !album) return <p>Loading...</p>;
 
   return (
     <div>
-      <h1>ALBUM</h1>
-      <ArtistCard artist={artist} />
+      <HeaderWithBanner
+        bannerAlt={album.name}
+        bannerSrc={album.image}
+        subtitle={album.release_date}
+        title={album.name}
+      />
     </div>
   );
 }

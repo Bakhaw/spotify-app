@@ -7,7 +7,7 @@ export async function search(query, type, accessToken) {
 
   const { data } = await axios.get(url);
 
-  console.log(data);
+  console.log('data', data);
 
   return data;
 }

@@ -2,9 +2,10 @@
   background: #191414;
 
   &--default {
-    border-radius: 500px;
-    height: 150px;
-    width: 150px;
+    object-position: top;
+    object-fit: cover;
+    max-height: 300px;
+    width: 100%;
   }
 
   &--small {

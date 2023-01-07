@@ -1,14 +1,22 @@
 import { fetchAlbum } from './albums';
 import { fetchArtistAlbums, fetchArtistInfos } from './artists';
-import { getAccessToken } from './authorize';
+import {
+  getAccessTokenFromURL,
+  getRefreshTokenFromURL,
+  refreshAccessToken,
+} from './authorize';
 import { search } from './search';
+import { fetchWrappedArtists } from './wrapped';
 
 const routes = {
   fetchAlbum,
   fetchArtistInfos,
   fetchArtistAlbums,
   search,
-  getAccessToken,
+  getAccessTokenFromURL,
+  getRefreshTokenFromURL,
+  refreshAccessToken,
+  fetchWrappedArtists,
 };
 
 export default routes;
