@@ -7,6 +7,8 @@ export async function fetchArtistInfos(
   artistID: Artist['id'],
   accessToken: AccessToken
 ) {
+  if (!artistID) return console.log('Missing Artist ID');
+
   const url = `${config.PROXY_BASE_URL}/artists/${artistID}/?access_token=${accessToken}`;
 
   const { data } = await axios.get(url);

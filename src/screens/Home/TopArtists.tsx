@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { fetchTopArtists, fetchTopTracks } from '../../API/routes/top';
 import { Artist, TimeRange, Track } from '../../types';
@@ -8,7 +9,7 @@ import Cover from '../../components/Cover';
 const TopArtists: React.FC = () => {
   const [topArtists, setTopArtists] = useState([]);
   const [topTracks, setTopTracks] = useState([]);
-  const timeRange = TimeRange.shortTerm;
+  const timeRange = TimeRange.longTerm;
   const accessToken = localStorage.getItem('SPOTIFY_ACCESS_TOKEN');
 
   useEffect(() => {
@@ -34,8 +35,8 @@ const TopArtists: React.FC = () => {
     }
   }
 
-  console.log('top artists:', topArtists);
-  console.log('top tracks:', topTracks);
+  // console.log('top artists:', topArtists);
+  // console.log('top tracks:', topTracks);
 
   return (
     <div>
@@ -46,8 +47,10 @@ const TopArtists: React.FC = () => {
       <ul className='flex gap-4 h-[300px] w-screen overflow-x-scroll my-4'>
         {topArtists.map((artist: Artist) => (
           <li key={artist.id} className='h-[200px]'>
-            <Cover url={artist.images[0].url} width='200px' />
-            <div>{artist.name}</div>
+            <Link to={`/artist/${artist.id}`}>
+              <Cover url={artist.images[0].url} radius='[30px]' width='200px' />
+              <div>{artist.name}</div>
+            </Link>
           </li>
         ))}
       </ul>
@@ -57,7 +60,11 @@ const TopArtists: React.FC = () => {
       <ul className='flex gap-4 h-[300px] w-screen overflow-x-scroll my-4'>
         {topTracks.map((track: Track) => (
           <li key={track.id} className='h-[200px]'>
-            <Cover url={track.album.images[0].url} width='200px' />
+            <Cover
+              url={track.album.images[0].url}
+              radius='full'
+              width='200px'
+            />
             <div>{track.name}</div>
           </li>
         ))}
