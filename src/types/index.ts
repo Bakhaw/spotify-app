@@ -1,11 +1,45 @@
 export type AccessToken = string;
 
 export interface Album {
+  album_type: string; // todo: create type enum?
+  artists: Artist[];
+  available_markets: []; // todo: create Market
+  external_urls: ExternalUrls;
+  href: string;
   id: string;
+  images: Image[];
+  name: string;
+  release_date: string; // date format: "YYYY-MM-DD"
+  release_date_precision: string; // todo: understand what "precision" means
+  total_tracks: number;
+  type: string; // todo: create type enum?
+  uri: string;
 }
 
 export interface Artist {
+  external_urls: ExternalUrls;
+  followers: {
+    href?: string;
+    total: number;
+  };
+  genres: string[];
+  href: string;
   id: string;
+  images: Image[];
+  name: string;
+  popularity: number;
+  type: string; // todo: create type enum?
+  uri: string;
+}
+
+export interface ExternalUrls {
+  spotify: string;
+}
+
+export interface Image {
+  height: number;
+  url: string;
+  width: number;
 }
 
 export interface Search {
@@ -27,4 +61,26 @@ export enum TimeRange {
   longTerm = 'long_term',
   mediumTerm = 'medium_term',
   shortTerm = 'short_term',
+}
+
+export interface Track {
+  album: Album;
+  artists: Artist[];
+  available_markets: []; // todo: create Market type
+  disc_number: number;
+  duration_ms: number;
+  explicit: boolean;
+  external_ids: {
+    isrc: string;
+  };
+  external_urls: ExternalUrls;
+  href: string;
+  id: string;
+  is_local: boolean;
+  name: string;
+  popularity: 0;
+  preview_url: string;
+  track_number: number;
+  type: string; // todo create type enum?
+  uri: string;
 }

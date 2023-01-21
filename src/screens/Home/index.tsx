@@ -1,5 +1,22 @@
+import { useEffect, useState } from 'react';
+import AuthorizeUser from './AuthorizeUser';
+import TopArtists from './TopArtists';
+
 function Home() {
-  return <div>Home</div>;
+  const [isUserLogged, setIsUserLogged] = useState(
+    localStorage.getItem('SPOTIFY_ACCESS_TOKEN')
+  );
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('SPOTIFY_ACCESS_TOKEN');
+    setIsUserLogged(accessToken);
+  }, []);
+
+  return (
+    <div className='h-screen'>
+      {isUserLogged ? <TopArtists /> : <AuthorizeUser />}
+    </div>
+  );
 }
 
 export default Home;
