@@ -1,0 +1,16 @@
+.SideBar {
+    &__content {
+        &__user {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            width: 100%;
+            padding: 8px 0;
+            p {
+                margin: 4px;
+            }
+        }
+    }
+}

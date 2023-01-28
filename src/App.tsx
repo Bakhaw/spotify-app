@@ -1,7 +1,13 @@
+import SideBar from './components/SideBar';
 import Router from './router';
 
 function App() {
-  return <Router />;
+  return (
+    <>
+      <SideBar />
+      <Router />
+    </>
+  );
 }
 
 export default App;
