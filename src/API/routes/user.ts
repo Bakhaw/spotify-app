@@ -1,15 +1,18 @@
 import axios from 'axios';
 
 import config from '../config';
-
-const accessToken = localStorage.getItem('SPOTIFY_ACCESS_TOKEN');
+import { refreshAccessToken } from './authorize';
 
 export async function fetchUserProfile() {
   const { data } = await axios.get(
-    `${config.PROXY_BASE_URL}/me?access_token=${accessToken}`
+    `${config.PROXY_BASE_URL}/me?access_token=${config.ACCESS_TOKEN}`
   );
 
-  // console.log('User Infos:', data);
+  console.log('fetchUserProfile()', data);
+
+  if (data.error?.status === 401) {
+    refreshAccessToken(config.REFRESH_TOKEN);
+  }
 
   return data;
 }

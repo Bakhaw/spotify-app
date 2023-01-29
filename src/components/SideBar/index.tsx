@@ -12,14 +12,14 @@ const SideBar: React.FC = () => {
   const [user, setUser] = React.useState<User | null>(null);
   const [isSideBarOpen, setSideBarOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    getUser();
-  }, []);
+  // React.useEffect(() => {
+  //   getUser();
+  // }, []);
 
-  async function getUser() {
-    const data = await fetchUserProfile();
-    setUser(data);
-  }
+  // async function getUser() {
+  //   const data = await fetchUserProfile();
+  //   setUser(data);
+  // }
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -35,8 +35,6 @@ const SideBar: React.FC = () => {
       setSideBarOpen(open);
     };
 
-  console.log(user);
-
   if (!user) return null;
 
   return (
@@ -50,12 +48,12 @@ const SideBar: React.FC = () => {
       >
         <div className='SideBar__content'>
           <div className='SideBar__content__user'>
-            <Avatar alt={user.display_name} src={user.images[0].url} />
+            {/* <Avatar alt={user.display_name} src={user.images[0].url} />
 
             <div>
               <p>{user.display_name}</p>
               <p>{user.followers.total} followers</p>
-            </div>
+            </div> */}
           </div>
 
           <SideBarItems toggleDrawer={toggleDrawer} />

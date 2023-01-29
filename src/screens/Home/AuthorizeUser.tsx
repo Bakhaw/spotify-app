@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import config from '../../API/config';
 import { getAccessTokenFromURL, getRefreshTokenFromURL } from '../../helpers';

@@ -11,7 +11,7 @@ export async function fetchTopArtists(
 
   const { data } = await axios.get(url);
 
-  // console.log('Top Artists:', data);
+  console.log('Top Artists:', data);
 
   return data.items;
 }
