@@ -8,7 +8,7 @@ export async function fetchUserProfile() {
     `${config.PROXY_BASE_URL}/me?access_token=${config.ACCESS_TOKEN}`
   );
 
-  console.log('fetchUserProfile()', data);
+  // console.log('fetchUserProfile()', data);
 
   if (data.error?.status === 401) {
     refreshAccessToken(config.REFRESH_TOKEN);

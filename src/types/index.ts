@@ -1,5 +1,11 @@
 export type AccessToken = string;
 
+export interface ApiResponse<T> {
+  error: any;
+  items: T[];
+  status: number;
+}
+
 export interface Album {
   album_type: string; // todo: create type enum?
   artists: Artist[];

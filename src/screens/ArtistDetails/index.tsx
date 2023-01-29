@@ -29,7 +29,7 @@ const ArtistDetails: React.FC = () => {
 
   return (
     <div>
-      <Cover url={artist.images[0].url} radius='[30px]' width='200px' />
+      <Cover src={artist.images[0].url} />
     </div>
   );
 };

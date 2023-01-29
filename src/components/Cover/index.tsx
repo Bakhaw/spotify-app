@@ -1,15 +1,16 @@
+import classNames from 'classnames';
+
 interface CoverProps {
-  radius: string;
-  url: string;
-  width: string;
+  rounded?: boolean;
+  src: string;
 }
 
-const Cover: React.FC<CoverProps> = ({ radius, url, width }) => {
+const Cover: React.FC<CoverProps> = ({ rounded, src }) => {
   return (
     <img
       alt='Cover'
-      className={`h-full w-[${width}] max-w-none rounded-${radius} shadow-md object-cover`}
-      src={url}
+      className={classNames('Cover', rounded && 'Cover--rounded')}
+      src={src}
     />
   );
 };

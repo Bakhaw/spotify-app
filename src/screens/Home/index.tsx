@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import AuthorizeUser from './AuthorizeUser';
+import Login from './Login';
 import TopArtists from './TopArtists';
 
 function Home() {
@@ -13,9 +13,7 @@ function Home() {
   }, []);
 
   return (
-    <div className='h-screen'>
-      {isUserLogged ? <TopArtists /> : <AuthorizeUser />}
-    </div>
+    <div className='Home'>{isUserLogged ? <TopArtists /> : <Login />}</div>
   );
 }
 
