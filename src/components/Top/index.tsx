@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
 import { fetchTopArtists, fetchTopTracks } from '../../API/routes/top';
-import { ApiResponse, Artist, TimeRange, Track } from '../../types';
+import { ApiListResponse, Artist, TimeRange, Track } from '../../types';
 
 import ArtistList from '../../components/ArtistList';
 import TrackList from '../../components/TrackList';
 
-const TopArtists: React.FC = () => {
-  const [topArtists, setTopArtists] = useState<ApiResponse<Artist> | null>(
+const Top: React.FC = () => {
+  const [topArtists, setTopArtists] = useState<ApiListResponse<Artist> | null>(
     null
   );
-  const [topTracks, setTopTracks] = useState<ApiResponse<Track> | null>(null);
+  const [topTracks, setTopTracks] = useState<ApiListResponse<Track> | null>(
+    null
+  );
   const timeRange = TimeRange.longTerm;
 
   useEffect(() => {
@@ -34,10 +36,10 @@ const TopArtists: React.FC = () => {
     <div>
       <h1 className='text-center'>Time range: {timeRange}</h1>
 
-      <ArtistList artists={topArtists.items} />
-      <TrackList tracks={topTracks.items} />
+      <ArtistList artists={topArtists.data.items} />
+      <TrackList tracks={topTracks.data.items} />
     </div>
   );
 };
 
-export default TopArtists;
+export default Top;

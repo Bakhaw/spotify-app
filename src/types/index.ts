@@ -1,8 +1,16 @@
 export type AccessToken = string;
 
 export interface ApiResponse<T> {
+  data: T;
   error: any;
-  items: T[];
+  status: number;
+}
+
+export interface ApiListResponse<T> {
+  data: {
+    items: T[];
+  };
+  error: any;
   status: number;
 }
 

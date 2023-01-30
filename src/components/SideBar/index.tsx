@@ -1,25 +1,18 @@
 import * as React from 'react';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
+import MenuIcon from '@mui/icons-material/Menu';
 
-import { User } from '../../types';
-import { fetchUserProfile } from '../../API/routes/user';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
 
-import SideBarItems from './SideBarItems';
 import Avatar from '../Avatar';
 
+import SideBarItems from './SideBarItems';
+
 const SideBar: React.FC = () => {
-  const [user, setUser] = React.useState<User | null>(null);
   const [isSideBarOpen, setSideBarOpen] = React.useState(false);
 
-  // React.useEffect(() => {
-  //   getUser();
-  // }, []);
-
-  // async function getUser() {
-  //   const data = await fetchUserProfile();
-  //   setUser(data);
-  // }
+  const user = useCurrentUser();
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -35,11 +28,15 @@ const SideBar: React.FC = () => {
       setSideBarOpen(open);
     };
 
-  if (!user) return null;
+  if (!user || user.error) return null;
+
+  const { display_name, images, followers } = user.data;
 
   return (
     <div className='SideBar'>
-      <Button onClick={toggleDrawer(true)}>Open SideBar</Button>
+      <Button onClick={toggleDrawer(true)}>
+        <MenuIcon />
+      </Button>
       <SwipeableDrawer
         anchor='left'
         open={isSideBarOpen}
@@ -48,15 +45,15 @@ const SideBar: React.FC = () => {
       >
         <div className='SideBar__content'>
           <div className='SideBar__content__user'>
-            {/* <Avatar alt={user.display_name} src={user.images[0].url} />
+            <Avatar alt={display_name} src={images[0].url} />
 
             <div>
-              <p>{user.display_name}</p>
-              <p>{user.followers.total} followers</p>
-            </div> */}
+              <p>{display_name}</p>
+              <p>{followers.total} followers</p>
+            </div>
           </div>
 
-          <SideBarItems toggleDrawer={toggleDrawer} />
+          <SideBarItems />
         </div>
       </SwipeableDrawer>
     </div>

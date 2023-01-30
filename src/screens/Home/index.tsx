@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+
+import Top from '../../components/Top';
+
 import Login from './Login';
-import TopArtists from './TopArtists';
 
 function Home() {
   const [isUserLogged, setIsUserLogged] = useState(
@@ -12,9 +14,7 @@ function Home() {
     setIsUserLogged(accessToken);
   }, []);
 
-  return (
-    <div className='Home'>{isUserLogged ? <TopArtists /> : <Login />}</div>
-  );
+  return <div className='Home'>{isUserLogged ? <Top /> : <Login />}</div>;
 }
 
 export default Home;

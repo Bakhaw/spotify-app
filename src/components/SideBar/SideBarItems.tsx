@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Box,
   Divider,
@@ -8,41 +9,77 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import HomeIcon from '@mui/icons-material/Home';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
+import SearchIcon from '@mui/icons-material/Search';
 
-interface SideBarItemsProps {
-  toggleDrawer: (
-    param: boolean
-  ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
-}
+const SideBarItems: React.FC = () => {
+  const links = [
+    {
+      icon: <HomeIcon />,
+      label: 'Home',
+      to: '/',
+    },
+    {
+      icon: <SearchIcon />,
+      label: 'Search',
+      to: '/search',
+    },
+    {
+      icon: <LibraryMusicIcon />,
+      label: 'Library',
+      to: '/library',
+    },
+    {
+      icon: <BarChartIcon />,
+      label: 'Top',
+      to: '/top',
+    },
+  ];
 
-const SideBarItems: React.FC<SideBarItemsProps> = ({ toggleDrawer }) => {
+  const userLinks = [
+    {
+      icon: <PersonIcon />,
+      label: 'Profile',
+      to: '/profile',
+    },
+    {
+      icon: <LogoutIcon />,
+      label: 'Logout',
+      to: '/logout',
+    },
+  ];
+
   return (
     <Box sx={{ width: 300 }} role='presentation'>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {links.map((link, index) => (
+          <Link key={index} to={link.to}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>{link.icon}</ListItemIcon>
+                <ListItemText primary={link.label} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
+
       <Divider />
+
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {userLinks.map((link, index) => (
+          <Link key={index} to={link.to}>
+            <ListItem key={index} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>{link.icon}</ListItemIcon>
+                <ListItemText primary={link.label} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Box>

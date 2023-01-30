@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import SideBar from '../components/SideBar';
 
 import ArtistDetails from '../screens/ArtistDetails';
