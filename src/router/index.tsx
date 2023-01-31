@@ -4,6 +4,7 @@ import SideBar from '../components/SideBar';
 
 import ArtistDetails from '../screens/ArtistDetails';
 import Home from '../screens/Home';
+import Top from '../screens/Top';
 
 function Router() {
   return (
@@ -11,6 +12,7 @@ function Router() {
       <SideBar />
 
       <Routes>
+        <Route path='/top' element={<Top />} />
         <Route path='/artist/:artistId' element={<ArtistDetails />} />
         <Route path='/' element={<Home />} />
       </Routes>

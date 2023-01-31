@@ -4,8 +4,6 @@ import { useParams } from 'react-router';
 import { fetchArtistInfos } from '../../API/routes/artists';
 import { Artist } from '../../types';
 
-import Cover from '../../components/Cover';
-
 const ArtistDetails: React.FC = () => {
   const { artistId } = useParams();
   const accessToken = localStorage.getItem('SPOTIFY_ACCESS_TOKEN');
@@ -20,16 +18,19 @@ const ArtistDetails: React.FC = () => {
     if (!artistId || !accessToken) return;
 
     const artist = await fetchArtistInfos(artistId, accessToken);
-    setArtist(artist);
 
-    console.log('Artist:', artist);
+    if (artist) {
+      setArtist(artist.data);
+    }
   }
 
   if (!artist) return null;
 
   return (
     <div>
-      <Cover src={artist.images[0].url} />
+      <img alt={artist.name} src={artist.images[0].url} />
+      <h1>{artist.name}</h1>
+      <h1>{artist.followers.total} followers</h1>
     </div>
   );
 };

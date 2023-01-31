@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import Top from '../../components/Top';
-
 import Login from './Login';
 
 function Home() {
@@ -14,7 +12,9 @@ function Home() {
     setIsUserLogged(accessToken);
   }, []);
 
-  return <div className='Home'>{isUserLogged ? <Top /> : <Login />}</div>;
+  return (
+    <div className='Home'>{isUserLogged ? <div>Home</div> : <Login />}</div>
+  );
 }
 
 export default Home;
