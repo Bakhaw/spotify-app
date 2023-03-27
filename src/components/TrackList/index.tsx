@@ -1,3 +1,5 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 import { Track } from '../../types';
 
 import Cover from '../../components/Cover';
@@ -11,14 +13,30 @@ const TrackList: React.FC<TrackListProps> = ({ tracks }) => {
     <div className='TrackList'>
       <h1>Favorite tracks</h1>
 
-      <ul>
+      <Swiper
+        spaceBetween={40}
+        slidesPerView={Math.round(window.innerWidth / 200)}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+        {tracks.map((track) => (
+          <li key={track.id}>
+            <SwiperSlide>
+              <Cover rounded src={track.album.images[0].url} />
+              <div>{track.name}</div>
+            </SwiperSlide>
+          </li>
+        ))}
+      </Swiper>
+
+      {/* <ul>
         {tracks.map((track) => (
           <li key={track.id}>
             <Cover rounded src={track.album.images[0].url} />
             <div>{track.name}</div>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };

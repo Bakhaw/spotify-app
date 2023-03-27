@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Artist } from '../../types';
 
@@ -13,16 +14,23 @@ const ArtistList: React.FC<ArtistListProps> = ({ artists }) => {
     <div className='ArtistList'>
       <h1>Favorite artists</h1>
 
-      <ul>
+      <Swiper
+        spaceBetween={40}
+        slidesPerView={Math.round(window.innerWidth / 200)}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
         {artists.map((artist) => (
           <li key={artist.id}>
-            <Link to={`/artist/${artist.id}`}>
-              <Cover src={artist.images[0].url} />
-              <div>{artist.name}</div>
-            </Link>
+            <SwiperSlide>
+              <Link to={`/artist/${artist.id}`}>
+                <Cover src={artist.images[0].url} />
+                <div>{artist.name}</div>
+              </Link>
+            </SwiperSlide>
           </li>
         ))}
-      </ul>
+      </Swiper>
     </div>
   );
 };

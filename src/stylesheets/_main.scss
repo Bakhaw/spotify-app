@@ -16,3 +16,8 @@ a {
   color: unset;
   text-decoration: none;
 }
+
+// "swiper" package overrides
+.swiper-slide {
+  width: 200px !important; // override swiper default width to make it match the artist Cover width
+}
