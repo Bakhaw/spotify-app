@@ -56,6 +56,12 @@ export interface Image {
   width: number;
 }
 
+export interface RecentlyPlayed {
+  context: []; // todo: create Context type
+  played_at: string;
+  track: Track;
+}
+
 export interface Search {
   query: string;
   type: SearchType;

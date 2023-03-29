@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import Login from './Login';
+import RecentlyPlayedTracks from './RecentlyPlayedTracks';
 
 function Home() {
   const [isUserLogged, setIsUserLogged] = useState(
@@ -13,7 +14,15 @@ function Home() {
   }, []);
 
   return (
-    <div className='Home'>{isUserLogged ? <div>Home</div> : <Login />}</div>
+    <div className='Home'>
+      {isUserLogged ? (
+        <div>
+          <RecentlyPlayedTracks />
+        </div>
+      ) : (
+        <Login />
+      )}
+    </div>
   );
 }
 

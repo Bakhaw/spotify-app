@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 interface CoverProps {
-  rounded?: boolean;
+  rounded?: boolean; // rounded style is applied for "tracks"
   src: string;
 }
 

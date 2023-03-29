@@ -15,7 +15,7 @@ const ArtistList: React.FC<ArtistListProps> = ({ artists }) => {
       <h1>Favorite artists</h1>
 
       <Swiper
-        spaceBetween={40}
+        spaceBetween={20}
         slidesPerView={Math.round(window.innerWidth / 200)}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
