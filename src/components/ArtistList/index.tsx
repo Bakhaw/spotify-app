@@ -13,10 +13,11 @@ const ArtistList: React.FC<ArtistListProps> = ({ artists }) => {
   return (
     <div className='ArtistList'>
       <Swiper
-        spaceBetween={20}
-        slidesPerView={Math.round(window.innerWidth / 200)}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
+        slidesPerView='auto'
+        spaceBetween={20}
+        speed={700}
       >
         {artists.map((artist) => (
           <li key={artist.id}>
