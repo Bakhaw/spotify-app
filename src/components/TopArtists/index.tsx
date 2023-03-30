@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { fetchTopArtists } from '../../API/routes/top';
 import { ApiListResponse, Artist, TimeRange } from '../../types';
@@ -26,7 +26,8 @@ const TopArtists: React.FC<TopArtistsProps> = ({ timeRange }) => {
   if (!topArtists) return null;
 
   return (
-    <div>
+    <div className='TopArtists'>
+      <h1 className='TopArtists__title'>Top Artists</h1>
       <ArtistList artists={topArtists.data.items} />
     </div>
   );

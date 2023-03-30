@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Container from '../../components/Container';
+
 import TopArtists from '../../components/TopArtists';
 import TopTracks from '../../components/TopTracks';
 import { TimeRange } from '../../types';
@@ -16,19 +18,18 @@ function Home() {
   }, []);
 
   return (
-    <div className='Home'>
-      {isUserLogged ? (
-        <div>
-          <h1>Top Artists</h1>
-          <TopArtists timeRange={TimeRange.mediumTerm} />
-
-          <h1>Mostly Played</h1>
-          <TopTracks timeRange={TimeRange.mediumTerm} />
-        </div>
-      ) : (
-        <Login />
-      )}
-    </div>
+    <Container>
+      <div className='Home'>
+        {isUserLogged ? (
+          <div>
+            <TopArtists timeRange={TimeRange.mediumTerm} />
+            <TopTracks timeRange={TimeRange.mediumTerm} />
+          </div>
+        ) : (
+          <Login />
+        )}
+      </div>
+    </Container>
   );
 }
 

@@ -1,8 +1,5 @@
 .ArtistList {
-  ul {
-    overflow-x: scroll;
-    display: flex;
-    gap: 16px;
-    padding: 16px;
+  .swiper {
+    padding: 0 40px;
   }
 }

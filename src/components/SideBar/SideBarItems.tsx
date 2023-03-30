@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Box,
@@ -54,7 +53,7 @@ const SideBarItems: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ width: 300 }} role='presentation'>
+    <Box role='presentation'>
       <List>
         {links.map((link, index) => (
           <Link key={index} to={link.to}>

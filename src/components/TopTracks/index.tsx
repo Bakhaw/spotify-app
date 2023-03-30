@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { fetchTopTracks } from '../../API/routes/top';
 import { ApiListResponse, TimeRange, Track } from '../../types';
@@ -26,7 +26,8 @@ const TopTracks: React.FC<TopTracksProps> = ({ timeRange }) => {
   if (!topTracks) return null;
 
   return (
-    <div>
+    <div className='TopTracks'>
+      <h1>Mostly Played</h1>
       <TrackList tracks={topTracks.data.items} />
     </div>
   );

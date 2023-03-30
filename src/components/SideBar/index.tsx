@@ -1,7 +1,4 @@
-import * as React from 'react';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
-import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from '@mui/material/Drawer';
 
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 
@@ -10,23 +7,7 @@ import Avatar from '../Avatar';
 import SideBarItems from './SideBarItems';
 
 const SideBar: React.FC = () => {
-  const [isSideBarOpen, setSideBarOpen] = React.useState(false);
-
   const user = useCurrentUser();
-
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event &&
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
-
-      setSideBarOpen(open);
-    };
 
   if (!user || user.error) return null;
 
@@ -34,14 +15,13 @@ const SideBar: React.FC = () => {
 
   return (
     <div className='SideBar'>
-      <Button onClick={toggleDrawer(true)}>
-        <MenuIcon />
-      </Button>
-      <SwipeableDrawer
+      <Drawer
+        variant='permanent'
         anchor='left'
-        open={isSideBarOpen}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
+        open={true}
+        PaperProps={{
+          sx: { width: 250 },
+        }}
       >
         <div className='SideBar__content'>
           <div className='SideBar__content__user'>
@@ -55,7 +35,7 @@ const SideBar: React.FC = () => {
 
           <SideBarItems />
         </div>
-      </SwipeableDrawer>
+      </Drawer>
     </div>
   );
 };

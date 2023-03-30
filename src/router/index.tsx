@@ -6,7 +6,7 @@ import ArtistDetails from '../screens/ArtistDetails';
 import Home from '../screens/Home';
 import Top from '../screens/Top';
 
-function Router() {
+const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <SideBar />
@@ -18,6 +18,6 @@ function Router() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default Router;
