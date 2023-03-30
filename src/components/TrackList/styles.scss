@@ -2,7 +2,7 @@
   ul {
     overflow-x: scroll;
     display: flex;
-    gap: 16px;
-    padding: 16px;
+    flex-direction: column;
+    gap: 30px;
   }
 }

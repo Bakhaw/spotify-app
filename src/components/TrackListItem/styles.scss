@@ -1,0 +1,10 @@
+.TrackListItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  border: 1px solid black;
+  width: 470px;
+  overflow: hidden;
+}

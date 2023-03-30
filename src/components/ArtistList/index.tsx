@@ -12,8 +12,6 @@ interface ArtistListProps {
 const ArtistList: React.FC<ArtistListProps> = ({ artists }) => {
   return (
     <div className='ArtistList'>
-      <h1>Favorite artists</h1>
-
       <Swiper
         spaceBetween={20}
         slidesPerView={Math.round(window.innerWidth / 200)}

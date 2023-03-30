@@ -6,7 +6,7 @@ import { ApiListResponse, Artist, TimeRange } from '../../types';
 import ArtistList from '../../components/ArtistList';
 
 interface TopArtistsProps {
-  timeRange: TimeRange;
+  timeRange: TimeRange; // long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks).
 }
 
 const TopArtists: React.FC<TopArtistsProps> = ({ timeRange }) => {

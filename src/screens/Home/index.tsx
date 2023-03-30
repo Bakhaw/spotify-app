@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import TopArtists from '../../components/TopArtists';
+import TopTracks from '../../components/TopTracks';
+import { TimeRange } from '../../types';
 
 import Login from './Login';
-import RecentlyPlayedTracks from './RecentlyPlayedTracks';
 
 function Home() {
   const [isUserLogged, setIsUserLogged] = useState(
@@ -17,7 +19,11 @@ function Home() {
     <div className='Home'>
       {isUserLogged ? (
         <div>
-          <RecentlyPlayedTracks />
+          <h1>Top Artists</h1>
+          <TopArtists timeRange={TimeRange.mediumTerm} />
+
+          <h1>Mostly Played</h1>
+          <TopTracks timeRange={TimeRange.mediumTerm} />
         </div>
       ) : (
         <Login />
