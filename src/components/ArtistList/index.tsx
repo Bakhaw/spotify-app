@@ -20,14 +20,12 @@ const ArtistList: React.FC<ArtistListProps> = ({ artists }) => {
         speed={700}
       >
         {artists.map((artist) => (
-          <li key={artist.id}>
-            <SwiperSlide>
-              <Link to={`/artist/${artist.id}`}>
-                <Cover src={artist.images[0].url} />
-                <div>{artist.name}</div>
-              </Link>
-            </SwiperSlide>
-          </li>
+          <SwiperSlide key={artist.id}>
+            <Link to={`/artist/${artist.id}`}>
+              <Cover src={artist.images[0].url} />
+              <div>{artist.name}</div>
+            </Link>
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>
