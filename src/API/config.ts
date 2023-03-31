@@ -10,7 +10,7 @@ const authQueryParams = {
   redirectUri:
     NODE_ENV === 'development' ? REACT_APP_APP_URL_DEV : REACT_APP_APP_URL_PROD,
   scopes:
-    'user-library-read user-read-recently-played user-read-currently-playing user-read-playback-state user-top-read user-follow-read streaming',
+    'user-library-modify user-library-read user-read-recently-played user-read-currently-playing user-read-playback-state user-top-read user-follow-read streaming',
 };
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';

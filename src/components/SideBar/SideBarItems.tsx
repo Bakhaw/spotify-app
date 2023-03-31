@@ -67,7 +67,7 @@ const SideBarItems: React.FC = () => {
         ))}
       </List>
 
-      <Divider />
+      <Divider color='#fff' />
 
       <List>
         {userLinks.map((link, index) => (

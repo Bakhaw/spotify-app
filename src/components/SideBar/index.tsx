@@ -20,7 +20,7 @@ const SideBar: React.FC = () => {
         anchor='left'
         open={true}
         PaperProps={{
-          sx: { width: 250 },
+          sx: { background: '#18031D', color: '#fff', width: 250 },
         }}
       >
         <div className='SideBar__content'>

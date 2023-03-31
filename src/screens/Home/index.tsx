@@ -22,8 +22,8 @@ function Home() {
       <div className='Home'>
         {isUserLogged ? (
           <div>
-            <TopArtists timeRange={TimeRange.mediumTerm} />
-            <TopTracks timeRange={TimeRange.mediumTerm} />
+            <TopArtists timeRange={TimeRange.shortTerm} />
+            <TopTracks timeRange={TimeRange.shortTerm} />
           </div>
         ) : (
           <Login />

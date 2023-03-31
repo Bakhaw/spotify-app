@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 
 import { fetchArtistInfos } from '../../API/routes/artists';
 import { Artist } from '../../types';
+import Container from '../../components/Container';
 
 const ArtistDetails: React.FC = () => {
   const { artistId } = useParams();
@@ -27,11 +28,13 @@ const ArtistDetails: React.FC = () => {
   if (!artist) return null;
 
   return (
-    <div>
-      <img alt={artist.name} src={artist.images[0].url} />
-      <h1>{artist.name}</h1>
-      <h1>{artist.followers.total} followers</h1>
-    </div>
+    <Container>
+      <div className='ArtistDetails'>
+        <img alt={artist.name} src={artist.images[0].url} />
+        <h1>{artist.name}</h1>
+        <h1>{artist.followers.total.toLocaleString()} followers</h1>
+      </div>
+    </Container>
   );
 };
 

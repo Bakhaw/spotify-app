@@ -1,3 +1,5 @@
 .Container {
   margin-left: 250px; // 250px SideBar width, so the content starts right after
+  padding: 40px 0;
+  min-height: calc(100vh - 80px); // 80px = top + bottom padding
 }

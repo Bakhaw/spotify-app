@@ -17,15 +17,3 @@ export async function fetchUserProfile() {
 
   return data;
 }
-
-export async function isTrackSaved(ids: Track['id'][]) {
-  const { data } = await axios.get(
-    `${config.PROXY_BASE_URL}/me/tracks/is-saved?ids=${ids}&access_token=${config.ACCESS_TOKEN}`
-  );
-
-  if (data.error?.status === 401) {
-    console.log('AuthorizationError');
-  }
-
-  return data;
-}

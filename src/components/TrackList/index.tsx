@@ -10,9 +10,9 @@ const TrackList: React.FC<TrackListProps> = ({ tracks }) => {
   return (
     <div className='TrackList'>
       <ul>
-        {tracks.map((track, index) => (
+        {tracks.map((track) => (
           <li key={track.id}>
-            <TrackListItem track={track} index={index + 1} />
+            <TrackListItem track={track} />
           </li>
         ))}
       </ul>
