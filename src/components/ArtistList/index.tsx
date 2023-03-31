@@ -13,8 +13,8 @@ const ArtistList: React.FC<ArtistListProps> = ({ artists }) => {
   return (
     <div className='ArtistList'>
       <Swiper
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
         slidesPerView='auto'
         spaceBetween={20}
         speed={700}

@@ -14,8 +14,14 @@ export interface ApiListResponse<T> {
   status: number;
 }
 
+export enum AlbumType {
+  album = 'album',
+  compilation = 'compilation',
+  single = 'single',
+}
+
 export interface Album {
-  album_type: string; // todo: create type enum?
+  album_type: AlbumType;
   artists: Artist[];
   available_markets: []; // todo: create Market
   external_urls: ExternalUrls;

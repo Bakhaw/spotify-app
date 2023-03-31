@@ -14,11 +14,15 @@ const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
   const [trackSaved, setTrackSaved] = useState<boolean>(false);
 
   async function checkIfTrackIsSaved() {
+    if (!track) return;
+
     const newTrackSaved = await isTrackSaved([track.id]);
     setTrackSaved(newTrackSaved.data[0]);
   }
 
   async function onFavoriteButtonClick() {
+    if (!track) return;
+
     if (trackSaved) {
       await removeTrack([track.id]);
       setTrackSaved(false);

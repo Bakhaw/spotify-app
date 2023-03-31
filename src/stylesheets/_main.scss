@@ -9,8 +9,12 @@ body {
   padding: 0;
 }
 
+h1,
 ul {
-  padding: 0;
+  padding-left: 40px;
+}
+
+ul {
   list-style: none;
 }
 
@@ -24,6 +28,10 @@ svg {
 }
 
 // "swiper" package overrides
+.swiper {
+  padding: 0 40px;
+}
+
 .swiper-slide {
   width: 200px !important; // override swiper default width to make it match the artist Cover width
 }
