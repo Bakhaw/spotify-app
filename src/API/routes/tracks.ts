@@ -25,7 +25,7 @@ export async function saveTrack(ids: Track['id'][]) {
     console.log('AuthorizationError');
   }
 
-  console.log('Save Track:', data);
+  // console.log('Save Track:', data);
 
   return data;
 }
@@ -39,7 +39,7 @@ export async function removeTrack(ids: Track['id'][]) {
     console.log('AuthorizationError');
   }
 
-  console.log('Remove Track:', data);
+  // console.log('Remove Track:', data);
 
   return data;
 }

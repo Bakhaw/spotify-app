@@ -18,18 +18,16 @@ function Home() {
   }, []);
 
   return (
-    <Container>
-      <div className='Home'>
-        {isUserLogged ? (
-          <div>
-            <TopArtists timeRange={TimeRange.shortTerm} />
-            <TopTracks timeRange={TimeRange.shortTerm} />
-          </div>
-        ) : (
-          <Login />
-        )}
-      </div>
-    </Container>
+    <div className='Home'>
+      {isUserLogged ? (
+        <Container>
+          <TopArtists timeRange={TimeRange.shortTerm} />
+          <TopTracks timeRange={TimeRange.shortTerm} />
+        </Container>
+      ) : (
+        <Login />
+      )}
+    </div>
   );
 }
 

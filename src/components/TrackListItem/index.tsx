@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react';
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import IconButton from '@mui/material/IconButton';
-
 import { isTrackSaved, removeTrack, saveTrack } from '../../API/routes/tracks';
 import { Track } from '../../types';
 
 import Cover from '../Cover';
+import classNames from 'classnames';
 
 interface TrackListItemProps {
   track: Track;
 }
 
 const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
-  const [trackSaved, setTrackSaved] = useState<boolean | null>(null);
+  const [trackSaved, setTrackSaved] = useState<boolean>(false);
 
   async function checkIfTrackIsSaved() {
     const newTrackSaved = await isTrackSaved([track.id]);
@@ -22,8 +19,6 @@ const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
   }
 
   async function onFavoriteButtonClick() {
-    console.log('Clicked on favorite', track.name);
-
     if (trackSaved) {
       await removeTrack([track.id]);
       setTrackSaved(false);
@@ -46,9 +41,10 @@ const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
         <div>{track.name}</div>
       </div>
 
-      <IconButton aria-label='favorite' onClick={onFavoriteButtonClick}>
-        {trackSaved ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-      </IconButton>
+      <div
+        className={classNames('heart', trackSaved && 'animate-heart')}
+        onClick={onFavoriteButtonClick}
+      ></div>
     </div>
   );
 };
