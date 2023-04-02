@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import IconButton from '@mui/material/IconButton';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 import { isTrackSaved, removeTrack, saveTrack } from '../../API/routes/tracks';
 import { Track } from '../../types';
+import { millisToMinutesAndSeconds } from '../../helpers';
 
 import Cover from '../Cover';
-import classNames from 'classnames';
 
 interface TrackListItemProps {
   track: Track;
@@ -41,14 +45,27 @@ const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
   return (
     <div className='TrackListItem'>
       <div className='TrackListItem__details'>
-        <Cover size='small' src={track.album.images[0].url} />
-        <div>{track.name}</div>
+        <Cover size='small' square src={track.album.images[0].url} />
+
+        <div className='TrackListItem__details__text'>
+          <div className='TrackListItem__details__text__song-name'>
+            {track.name}
+          </div>
+          <div>{track.artists[0].name}</div>
+        </div>
       </div>
 
-      <div
-        className={classNames('heart', trackSaved && 'animate-heart')}
-        onClick={onFavoriteButtonClick}
-      ></div>
+      <div className='TrackListItem__actions'>
+        <IconButton aria-label='favorite' onClick={onFavoriteButtonClick}>
+          {trackSaved ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        </IconButton>
+
+        <div>{millisToMinutesAndSeconds(track.duration_ms)}</div>
+
+        <IconButton>
+          <MoreHorizIcon />
+        </IconButton>
+      </div>
     </div>
   );
 };

@@ -5,6 +5,10 @@
   border-radius: 30px;
 }
 
+.Cover--square {
+  border-radius: 0 !important;
+}
+
 .Cover--rounded {
   border-radius: 999px;
 }

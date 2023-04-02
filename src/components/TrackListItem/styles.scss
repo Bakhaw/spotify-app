@@ -3,41 +3,38 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  width: 470px;
+  width: 550px;
   overflow: hidden;
   background: #18031d;
+  color: #9d85a3;
+
+  svg {
+    fill: #f8daff !important;
+  }
 
   &__details {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 12px;
+
+    &__text {
+      width: 300px;
+
+      &__song-name {
+        color: #f8daff;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
   }
-}
 
-.heart {
-  cursor: pointer;
-  height: 65px;
-  width: 65px;
-  background-image: url('https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: 2900%;
-
-  &:hover {
-    background-position: right;
-  }
-}
-
-.animate-heart {
-  animation: heart-burst 0.8s steps(28) forwards;
-}
-
-@keyframes heart-burst {
-  from {
-    background-position: left;
-  }
-  to {
-    background-position: right;
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-right: 10px;
   }
 }
