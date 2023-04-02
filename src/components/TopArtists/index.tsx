@@ -27,8 +27,7 @@ const TopArtists: React.FC<TopArtistsProps> = ({ timeRange }) => {
 
   return (
     <div className='TopArtists'>
-      <h1 className='TopArtists__title'>Top Artists</h1>
-      <ArtistList artists={topArtists.data.items} />
+      <ArtistList artists={topArtists.data.items} title='Top Artists' />
     </div>
   );
 };

@@ -9,6 +9,7 @@ import { Track } from '../../types';
 import { millisToMinutesAndSeconds } from '../../helpers';
 
 import Cover from '../Cover';
+import { playSong } from '../../API/routes/player';
 
 interface TrackListItemProps {
   track: Track;
@@ -42,8 +43,15 @@ const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
     }
   }, []);
 
+  async function handleTrackListItemClick() {
+    const data = await playSong({
+      contextUri: track.album.uri,
+      uris: track.uri,
+    });
+  }
+
   return (
-    <div className='TrackListItem'>
+    <div className='TrackListItem' onClick={handleTrackListItemClick}>
       <div className='TrackListItem__details'>
         <Cover size='small' square src={track.album.images[0].url} />
 

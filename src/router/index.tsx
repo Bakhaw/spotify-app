@@ -4,12 +4,14 @@ import SideBar from '../components/SideBar';
 
 import ArtistDetails from '../screens/ArtistDetails';
 import Home from '../screens/Home';
+import Player from '../components/Player';
 import Top from '../screens/Top';
 
 const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <SideBar />
+      <Player />
 
       <Routes>
         <Route path='/top' element={<Top />} />

@@ -1,4 +1,10 @@
 .TrackList {
+  padding: 0 40px;
+
+  &__title {
+    font-family: 'GothamBold', Arial, Helvetica, sans-serif;
+  }
+
   ul {
     display: flex;
     flex-direction: column;

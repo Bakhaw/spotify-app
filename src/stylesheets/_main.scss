@@ -1,20 +1,21 @@
 * {
-  font-family: 'Roboto Condensed', sans-serif;
+  // font-family: 'GothaBolder';
+  // font-family: 'GothamBold';
+  font-family: 'GothamMedium';
+  // font-family: 'GothamLight';
+  // font-family: 'GothamLighter';
+  letter-spacing: -0.2px;
 }
 
 body {
-  background: linear-gradient(159.32deg, #0d273d 12.69%, #ac0ccf 116.57%);
+  background: #111112;
   color: #fff;
   margin: 0;
   padding: 0;
 }
 
-h1,
 ul {
-  padding-left: 40px;
-}
-
-ul {
+  padding: 0;
   list-style: none;
 }
 

@@ -7,18 +7,14 @@ import Cover from '../../components/Cover';
 
 interface ArtistListProps {
   artists: Artist[];
+  title?: string;
 }
 
-const ArtistList: React.FC<ArtistListProps> = ({ artists }) => {
+const ArtistList: React.FC<ArtistListProps> = ({ artists, title }) => {
   return (
     <div className='ArtistList'>
-      <Swiper
-        // onSlideChange={() => console.log('slide change')}
-        // onSwiper={(swiper) => console.log(swiper)}
-        slidesPerView='auto'
-        spaceBetween={20}
-        speed={700}
-      >
+      <h1 className='ArtistList__title'>{title}</h1>
+      <Swiper slidesPerView='auto' spaceBetween={20} speed={700}>
         {artists.map((artist) => (
           <SwiperSlide key={artist.id}>
             <Link to={`/artist/${artist.id}`}>

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { fetchRecentlyPlayed } from '../../API/routes/playlist';
-import Cover from '../../components/Cover';
+import { fetchRecentlyPlayed } from '../../API/routes/player';
 import { ApiListResponse, RecentlyPlayed } from '../../types';
+
+import Cover from '../../components/Cover';
 
 function RecentlyPlayedTracks() {
   const [recentlyPlayedTracks, setRecentlyPlayedTracks] =

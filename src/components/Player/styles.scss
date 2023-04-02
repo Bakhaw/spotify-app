@@ -1,0 +1,11 @@
+.Player {
+  z-index: 99999;
+  position: fixed;
+  bottom: 0;
+  background-color: red;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

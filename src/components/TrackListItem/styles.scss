@@ -1,16 +1,13 @@
 .TrackListItem {
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  width: 550px;
+  width: 100%;
   overflow: hidden;
-  background: #18031d;
-  color: #9d85a3;
-
-  svg {
-    fill: #f8daff !important;
-  }
+  background: #18181c;
+  color: #a5a5a5;
 
   &__details {
     display: flex;
@@ -22,7 +19,7 @@
       width: 300px;
 
       &__song-name {
-        color: #f8daff;
+        color: #fff;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;

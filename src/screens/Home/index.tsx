@@ -22,7 +22,9 @@ function Home() {
       {isUserLogged ? (
         <Container>
           <TopArtists timeRange={TimeRange.shortTerm} />
-          <TopTracks timeRange={TimeRange.shortTerm} />
+          <div className='Mostly-Played'>
+            <TopTracks timeRange={TimeRange.shortTerm} />
+          </div>
         </Container>
       ) : (
         <Login />
