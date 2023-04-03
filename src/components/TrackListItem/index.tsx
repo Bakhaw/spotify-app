@@ -9,7 +9,7 @@ import { Track } from '../../types';
 import { millisToMinutesAndSeconds } from '../../helpers';
 
 import Cover from '../Cover';
-import { playSong } from '../../API/routes/player';
+import { currentlyPlaying, playSong } from '../../API/routes/player';
 
 interface TrackListItemProps {
   track: Track;
@@ -43,6 +43,7 @@ const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
     }
   }, []);
 
+  // todo remove this
   async function handleTrackListItemClick() {
     const data = await playSong({
       contextUri: track.album.uri,

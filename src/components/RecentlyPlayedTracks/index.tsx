@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { fetchRecentlyPlayed } from '../../API/routes/player';
+import { recentlyPlayed } from '../../API/routes/player';
 import { ApiListResponse, RecentlyPlayed } from '../../types';
 
 import Cover from '../../components/Cover';
@@ -14,7 +14,7 @@ function RecentlyPlayedTracks() {
   }, []);
 
   async function getRecentlyPlayed() {
-    const recentlyPlayedTracks = await fetchRecentlyPlayed();
+    const recentlyPlayedTracks = await recentlyPlayed();
     setRecentlyPlayedTracks(recentlyPlayedTracks);
   }
 

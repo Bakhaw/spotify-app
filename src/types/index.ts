@@ -52,6 +52,19 @@ export interface Artist {
   uri: string;
 }
 
+export interface CurrentlyPlaying {
+  device: {}; // todo create Device interface
+  repeat_state: string;
+  shuffle_state: boolean;
+  context: {}; // todo create Context interface
+  timestamp: number;
+  progress_ms: number;
+  is_playing: boolean;
+  item: Track; // todo it also can be EpisodeObject => create Episode interface
+  currently_playing_type: 'track' | 'episode' | 'ad' | 'unknown';
+  actions: {}; // create Actions object
+}
+
 export interface ExternalUrls {
   spotify: string;
 }
