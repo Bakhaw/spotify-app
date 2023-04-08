@@ -23,22 +23,31 @@ export async function currentlyPlaying() {
   return data;
 }
 
-export async function playSong({
-  contextUri,
-  positionMs = 0,
-  uris,
-}: {
-  contextUri: Album['uri'];
+type PlaySongParams = {
+  contextUri?: Album['uri'];
   positionMs?: CurrentlyPlaying['progress_ms'];
-  uris: Track['uri'];
-}) {
-  const url = `${config.PROXY_BASE_URL}/player/play?context_uri=${contextUri}&position_ms=${positionMs}&uris=${uris}&access_token=${config.ACCESS_TOKEN}`;
+  uris?: Track['uri'];
+};
+export async function playSong(options?: PlaySongParams) {
+  if (options) {
+    console.log('options????', options);
+    const { contextUri, positionMs, uris } = options;
+    const url = `${config.PROXY_BASE_URL}/player/play?context_uri=${contextUri}&position_ms=${positionMs}&uris=${uris}&access_token=${config.ACCESS_TOKEN}`;
 
-  const { data } = await axios.put(url);
+    const { data } = await axios.put(url);
 
-  //   console.log('Play song:', data);
+    //   console.log('Play song with options:', data);
 
-  return data;
+    return data;
+  } else {
+    const url = `${config.PROXY_BASE_URL}/player/play?access_token=${config.ACCESS_TOKEN}`;
+
+    const { data } = await axios.put(url);
+
+    //   console.log('Resume song:', data);
+
+    return data;
+  }
 }
 
 export async function pauseSong() {

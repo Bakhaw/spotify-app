@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IconButton from '@mui/material/IconButton';
@@ -10,6 +10,7 @@ import { millisToMinutesAndSeconds } from '../../helpers';
 
 import Cover from '../Cover';
 import { currentlyPlaying, playSong } from '../../API/routes/player';
+import { SpotifyContext } from '../../context';
 
 interface TrackListItemProps {
   track: Track;
@@ -43,12 +44,11 @@ const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
     }
   }, []);
 
-  // todo remove this
-  async function handleTrackListItemClick() {
-    const data = await playSong({
-      contextUri: track.album.uri,
-      uris: track.uri,
-    });
+  const { handlePlaySong } = useContext(SpotifyContext);
+  function handleTrackListItemClick() {
+    if (!handlePlaySong) return;
+
+    handlePlaySong(track);
   }
 
   return (
