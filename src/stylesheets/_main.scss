@@ -7,6 +7,10 @@
   letter-spacing: -0.2px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background: #111112;
   color: #fff;

@@ -14,14 +14,14 @@ const TopTracks: React.FC<TopTracksProps> = ({ timeRange }) => {
     null
   );
 
-  useEffect(() => {
-    getTopTracks();
-  }, []);
-
   async function getTopTracks() {
     const topTracks = await fetchTopTracks(timeRange);
     setTopTracks(topTracks);
   }
+
+  useEffect(() => {
+    getTopTracks();
+  }, [timeRange]);
 
   if (!topTracks) return null;
 

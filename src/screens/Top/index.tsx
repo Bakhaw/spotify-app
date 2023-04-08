@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 
 import { TimeRange } from '../../types';
 
@@ -7,11 +7,22 @@ import TopArtists from '../../components/TopArtists';
 import TopTracks from '../../components/TopTracks';
 
 const Top: React.FC = () => {
-  const timeRange = TimeRange.shortTerm;
+  const [timeRange, setTimeRange] = useState<TimeRange>(TimeRange.mediumTerm);
+
+  function handleSelectChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const newTimeRange = e.target.value as TimeRange;
+    setTimeRange(newTimeRange);
+  }
 
   return (
     <Container>
-      <h1 className='text-center'>Time range: {timeRange}</h1>
+      <div>
+        <select onChange={handleSelectChange}>
+          <option value={TimeRange.shortTerm}>Last month</option>
+          <option value={TimeRange.mediumTerm}>Last 6 months</option>
+          <option value={TimeRange.longTerm}>All time</option>
+        </select>
+      </div>
 
       <TopArtists timeRange={timeRange} />
       <TopTracks timeRange={timeRange} />

@@ -14,14 +14,14 @@ const TopArtists: React.FC<TopArtistsProps> = ({ timeRange }) => {
     null
   );
 
-  useEffect(() => {
-    getTopArtists();
-  }, []);
-
   async function getTopArtists() {
     const topArtists = await fetchTopArtists(timeRange);
     setTopArtists(topArtists);
   }
+
+  useEffect(() => {
+    getTopArtists();
+  }, [timeRange]);
 
   if (!topArtists) return null;
 
