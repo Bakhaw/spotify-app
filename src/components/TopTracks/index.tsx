@@ -27,7 +27,11 @@ const TopTracks: React.FC<TopTracksProps> = ({ timeRange }) => {
 
   return (
     <div className='TopTracks'>
-      <TrackList title='Mostly Played' tracks={topTracks.data.items} />
+      <TrackList
+        showCover
+        title='Mostly Played'
+        tracks={topTracks.data.items}
+      />
     </div>
   );
 };

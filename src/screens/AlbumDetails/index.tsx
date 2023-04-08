@@ -29,8 +29,15 @@ const AlbumDetails: React.FC = () => {
     (acc, curr) => acc + curr.duration_ms,
     0
   );
+
+  console.log('current album', currentAlbum);
+
   const albumDuration = millisToMinutesAndSeconds(duration);
   const albumReleaseDate = new Date(currentAlbum.release_date).getFullYear();
+  const albumTracks = currentAlbum.tracks.items.map((track) => ({
+    ...track,
+    album: currentAlbum,
+  }));
 
   return (
     <Container>
@@ -60,7 +67,7 @@ const AlbumDetails: React.FC = () => {
           </div>
         </div>
 
-        <TrackList showOrder tracks={currentAlbum.tracks.items} />
+        <TrackList showOrder tracks={albumTracks} />
       </div>
     </Container>
   );

@@ -13,10 +13,15 @@ import Cover from '../Cover';
 
 interface TrackListItemProps {
   order?: number | null;
+  showCover?: boolean; // default false;
   track: Track;
 }
 
-const TrackListItem: React.FC<TrackListItemProps> = ({ order, track }) => {
+const TrackListItem: React.FC<TrackListItemProps> = ({
+  order,
+  showCover = false,
+  track,
+}) => {
   const [trackSaved, setTrackSaved] = useState<boolean>(false);
 
   async function checkIfTrackIsSaved() {
@@ -56,7 +61,7 @@ const TrackListItem: React.FC<TrackListItemProps> = ({ order, track }) => {
       <div className='TrackListItem__details'>
         {order && <span>{order}</span>}
 
-        {track.album && (
+        {showCover && (
           <Cover size='small' square src={track.album.images[0].url} />
         )}
 
