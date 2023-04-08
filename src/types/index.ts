@@ -84,6 +84,25 @@ export interface Image {
   width: number;
 }
 
+export interface Playlist {
+  collaborative: boolean;
+  description: string;
+  external_urls: ExternalUrls;
+  href: string;
+  id: string;
+  images: Image[];
+  name: string;
+  owner: User;
+  public: boolean;
+  snapshot_id: string;
+  tracks: {
+    href: string;
+    total: number;
+  };
+  type: string; // playlist
+  uri: string;
+}
+
 export interface RecentlyPlayed {
   context: []; // todo: create Context type
   played_at: string;
@@ -134,6 +153,20 @@ export interface Track {
 }
 
 export interface User {
+  display_name: string;
+  external_urls: ExternalUrls;
+  followers: {
+    href: string;
+    total: number;
+  };
+  href: string;
+  id: string;
+  images: Image[];
+  type: string;
+  uri: string;
+}
+
+export interface CurrentUser {
   country: string;
   display_name: string;
   email: string;

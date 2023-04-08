@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { SvgIcon } from '@mui/material';
@@ -8,10 +9,25 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import SearchIcon from '@mui/icons-material/Search';
 
+import { Playlist } from '../../types';
 import { useCurrentUser } from '../../hooks/useCurrentUser';
+import { fetchUserPlaylists } from '../../API/routes/playlists';
 
 const SideBar: React.FC = () => {
   const user = useCurrentUser();
+  const [userPlaylists, setUserPlaylists] = useState<Playlist[] | null>();
+
+  async function getUserPlaylists() {
+    const data = await fetchUserPlaylists();
+
+    console.log('here', data);
+
+    setUserPlaylists(data.items);
+  }
+
+  useEffect(() => {
+    getUserPlaylists();
+  }, []);
 
   const links = [
     {
@@ -61,6 +77,20 @@ const SideBar: React.FC = () => {
           </Link>
         ))}
       </ul>
+
+      {userPlaylists && (
+        <ul className='SideBar__list'>
+          {userPlaylists.map((playlist, index) => (
+            <Link
+              className='SideBar__list--item'
+              key={index}
+              to={`/playlist/${playlist.id}`}
+            >
+              <span>{playlist.name}</span>
+            </Link>
+          ))}
+        </ul>
+      )}
 
       <ul className='SideBar__list'>
         {userLinks.map((link, index) => (
