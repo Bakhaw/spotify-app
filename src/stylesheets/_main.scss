@@ -14,8 +14,13 @@ body {
   padding: 0;
 }
 
+span {
+  display: block;
+}
+
 ul {
   padding: 0;
+  margin: 0;
   list-style: none;
 }
 
@@ -25,7 +30,7 @@ a {
 }
 
 svg {
-  fill: #fff !important;
+  color: #fff;
 }
 
 // "swiper" package overrides

@@ -1,13 +1,56 @@
-import Drawer from '@mui/material/Drawer';
+import { Link } from 'react-router-dom';
+
+import { SvgIcon } from '@mui/material';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import HomeIcon from '@mui/icons-material/Home';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
+import SearchIcon from '@mui/icons-material/Search';
 
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 
 import Avatar from '../Avatar';
-
 import SideBarItems from './SideBarItems';
 
 const SideBar: React.FC = () => {
   const user = useCurrentUser();
+
+  const links = [
+    {
+      icon: <HomeIcon />,
+      label: 'Home',
+      to: '/',
+    },
+    {
+      icon: <SearchIcon />,
+      label: 'Search',
+      to: '/search',
+    },
+    {
+      icon: <LibraryMusicIcon />,
+      label: 'Library',
+      to: '/library',
+    },
+    {
+      icon: <BarChartIcon />,
+      label: 'Top',
+      to: '/top',
+    },
+  ];
+
+  const userLinks = [
+    {
+      icon: <PersonIcon />,
+      label: 'Profile',
+      to: '/profile',
+    },
+    {
+      icon: <LogoutIcon />,
+      label: 'Logout',
+      to: '/logout',
+    },
+  ];
 
   if (!user || user.error) return null;
 
@@ -15,27 +58,14 @@ const SideBar: React.FC = () => {
 
   return (
     <div className='SideBar'>
-      <Drawer
-        variant='permanent'
-        anchor='left'
-        open={true}
-        PaperProps={{
-          sx: { background: '#060606', color: '#fff', width: 250 },
-        }}
-      >
-        <div className='SideBar__content'>
-          <div className='SideBar__content__user'>
-            <Avatar alt={display_name} src={images[0].url} />
-
-            <div>
-              <p>{display_name}</p>
-              <p>{followers.total} followers</p>
-            </div>
-          </div>
-
-          <SideBarItems />
-        </div>
-      </Drawer>
+      <ul className='SideBar__list'>
+        {links.map((link, index) => (
+          <Link className='SideBar__list--item' key={index} to={link.to}>
+            <SvgIcon>{link.icon}</SvgIcon>
+            <span>{link.label}</span>
+          </Link>
+        ))}
+      </ul>
     </div>
   );
 };

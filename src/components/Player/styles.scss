@@ -1,13 +1,13 @@
 .Player {
-  z-index: 99999;
-  position: fixed;
-  bottom: 0;
-  background-color: #060606;
-  height: 80px;
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #060606;
+  z-index: 99999;
+  height: 70px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 
   &__current-track {
     display: flex;

@@ -21,9 +21,11 @@ function Home() {
     <div className='Home'>
       {isUserLogged ? (
         <Container>
-          <TopArtists timeRange={TimeRange.shortTerm} />
-          <div className='Mostly-Played'>
-            <TopTracks timeRange={TimeRange.shortTerm} />
+          <div className='Home__container'>
+            <TopArtists timeRange={TimeRange.shortTerm} />
+            <div className='Mostly-Played'>
+              <TopTracks timeRange={TimeRange.shortTerm} />
+            </div>
           </div>
         </Container>
       ) : (

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { fetchTopArtists } from '../../API/routes/top';
 import { ApiListResponse, Artist, TimeRange } from '../../types';
 
-import ArtistList from '../../components/ArtistList';
+import HorizontalSlider from '../HorizontalSlider';
 
 interface TopArtistsProps {
   timeRange: TimeRange; // long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks).
@@ -27,7 +27,11 @@ const TopArtists: React.FC<TopArtistsProps> = ({ timeRange }) => {
 
   return (
     <div className='TopArtists'>
-      <ArtistList artists={topArtists.data.items} title='Top Artists' />
+      <HorizontalSlider
+        items={topArtists.data.items}
+        type='artist'
+        title='Top Artists'
+      />
     </div>
   );
 };

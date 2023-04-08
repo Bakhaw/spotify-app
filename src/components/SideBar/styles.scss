@@ -1,15 +1,35 @@
 .SideBar {
-  &__content {
-    &__user {
+  height: auto;
+  width: 220px;
+  height: 100vh;
+  background: #060606;
+  position: absolute;
+  left: 0;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 220px;
+    padding: 12px;
+
+    &--item {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      gap: 4px;
-      width: 100%;
-      padding: 8px 0;
-      p {
-        margin: 4px;
+      gap: 12px;
+      color: #bfbfbf;
+
+      svg {
+        color: #bfbfbf;
+      }
+
+      &:hover {
+        color: #fff;
+
+        svg {
+          color: #fff;
+        }
       }
     }
   }

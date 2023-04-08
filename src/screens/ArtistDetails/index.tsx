@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { fetchArtistAlbums, fetchArtistInfos } from '../../API/routes/artists';
 import { Album, AlbumType, Artist } from '../../types';
 import Container from '../../components/Container';
-import Cover from '../../components/Cover';
+import HorizontalSlider from '../../components/HorizontalSlider';
 
 const ArtistDetails: React.FC = () => {
   const { artistId } = useParams();
@@ -56,29 +54,8 @@ const ArtistDetails: React.FC = () => {
           <h2>{artist.followers.total.toLocaleString()} followers</h2>
         </div>
 
-        <h1>Albums</h1>
-        <Swiper slidesPerView='auto' spaceBetween={20} speed={700}>
-          {albums.map((album) => (
-            <SwiperSlide key={album.id}>
-              <Link to={`/album/${album.id}`}>
-                <Cover src={album.images[0].url} />
-                <div>{album.name}</div>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        <h1>Singles & EP</h1>
-        <Swiper slidesPerView='auto' spaceBetween={20} speed={700}>
-          {singles.map((album) => (
-            <SwiperSlide key={album.id}>
-              <Link to={`/album/${album.id}`}>
-                <Cover src={album.images[0].url} />
-                <div>{album.name}</div>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <HorizontalSlider items={albums} type='album' title='Albums' />
+        <HorizontalSlider items={singles} type='album' title='Singles & EP' />
       </div>
     </Container>
   );

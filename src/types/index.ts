@@ -32,6 +32,10 @@ export interface Album {
   release_date: string; // date format: "YYYY-MM-DD"
   release_date_precision: string; // todo: understand what "precision" means
   total_tracks: number;
+  tracks: {
+    href: string;
+    items: Track[];
+  };
   type: string; // todo: create type enum?
   uri: string;
 }

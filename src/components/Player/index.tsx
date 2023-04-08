@@ -59,8 +59,8 @@ const Player: React.FC = () => {
         <div className='Player__current-track__left'>
           <Cover size='small' src={currentTrack.album.images[0].url} />
           <div>
-            <p>{currentTrack.name}</p>
-            <p>{currentTrack.artists[0].name}</p>
+            <span>{currentTrack.name}</span>
+            <span>{currentTrack.artists[0].name}</span>
           </div>
         </div>
 

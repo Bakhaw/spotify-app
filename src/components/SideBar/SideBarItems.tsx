@@ -53,19 +53,17 @@ const SideBarItems: React.FC = () => {
   ];
 
   return (
-    <Box role='presentation'>
-      <List>
+    <>
+      <ul>
         {links.map((link, index) => (
           <Link key={index} to={link.to}>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>{link.icon}</ListItemIcon>
-                <ListItemText primary={link.label} />
-              </ListItemButton>
-            </ListItem>
+            <ListItemButton>
+              <ListItemIcon>{link.icon}</ListItemIcon>
+              <span>{link.label}</span>
+            </ListItemButton>
           </Link>
         ))}
-      </List>
+      </ul>
 
       <Divider color='#fff' />
 
@@ -81,7 +79,7 @@ const SideBarItems: React.FC = () => {
           </Link>
         ))}
       </List>
-    </Box>
+    </>
   );
 };
 

@@ -31,7 +31,7 @@ const initialContext: ContextValue = {
 export const SpotifyContext = createContext<ContextValue>(initialContext);
 
 interface ContextProviderProps {
-  children: React.ReactNode;
+  children: JSX.Element;
 }
 
 const ContextProvider: React.FC<ContextProviderProps> = ({ children }) => {
