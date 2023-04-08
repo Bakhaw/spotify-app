@@ -19,9 +19,6 @@ const SideBar: React.FC = () => {
 
   async function getUserPlaylists() {
     const data = await fetchUserPlaylists();
-
-    console.log('here', data);
-
     setUserPlaylists(data.items);
   }
 

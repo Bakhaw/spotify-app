@@ -5,6 +5,8 @@
   background: #060606;
   position: absolute;
   left: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   &__list {
     display: flex;

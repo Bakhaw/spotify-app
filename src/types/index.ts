@@ -95,10 +95,8 @@ export interface Playlist {
   owner: User;
   public: boolean;
   snapshot_id: string;
-  tracks: {
-    href: string;
-    total: number;
-  };
+  total_tracks: number;
+  tracks: Track[];
   type: string; // playlist
   uri: string;
 }
