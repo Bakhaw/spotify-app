@@ -1,12 +1,12 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Container from '../../components/Container';
 import { fetchPlaylistById } from '../../API/routes/playlists';
-import { useEffect, useState } from 'react';
 import { Playlist } from '../../types';
+import { millisToMinutesAndSeconds } from '../../helpers';
+import Container from '../../components/Container';
 import Cover from '../../components/Cover';
 import TrackList from '../../components/TrackList';
-import { millisToMinutesAndSeconds } from '../../helpers';
 
 const PlaylistDetails: React.FC = () => {
   const params = useParams();
@@ -27,7 +27,7 @@ const PlaylistDetails: React.FC = () => {
     (acc, curr) => acc + curr.duration_ms,
     0
   );
-  const albumDuration = millisToMinutesAndSeconds(duration);
+  const playlistDuration = millisToMinutesAndSeconds(duration);
 
   return (
     <Container>
@@ -46,13 +46,11 @@ const PlaylistDetails: React.FC = () => {
             </div>
 
             <div className='AlbumDetails__description--metas'>
-              {/* <span>{currentAlbum.artists[0].name}</span> */}
-              {/* <span>{albumReleaseDate}</span> */}
               <span>
                 {currentPlaylist.total_tracks}{' '}
                 {currentPlaylist.total_tracks > 1 ? 'tracks' : 'track'}
               </span>
-              <span>{albumDuration}</span>
+              <span>{playlistDuration}</span>
             </div>
           </div>
         </div>
