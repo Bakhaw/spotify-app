@@ -33,7 +33,7 @@ const PlaylistDetails: React.FC = () => {
     <Container>
       <div>
         <div className='AlbumDetails'>
-          <Cover src={currentPlaylist.images[0].url} />
+          <Cover src={currentPlaylist.images?.[0]?.url} />
 
           <div className='AlbumDetails__description'>
             <div>

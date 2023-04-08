@@ -13,6 +13,8 @@ const Cover: React.FC<CoverProps> = ({
   square,
   src,
 }) => {
+  const srcFallback = 'https://placehold.co/600x400/060606/bfbfbf?text=?';
+
   return (
     <img
       alt='Cover'
@@ -22,7 +24,7 @@ const Cover: React.FC<CoverProps> = ({
         rounded && 'Cover--rounded',
         square && 'Cover--square'
       )}
-      src={src}
+      src={src ?? srcFallback}
     />
   );
 };
