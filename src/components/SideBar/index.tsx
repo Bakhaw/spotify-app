@@ -10,9 +10,6 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 
-import Avatar from '../Avatar';
-import SideBarItems from './SideBarItems';
-
 const SideBar: React.FC = () => {
   const user = useCurrentUser();
 
@@ -54,12 +51,19 @@ const SideBar: React.FC = () => {
 
   if (!user || user.error) return null;
 
-  const { display_name, images, followers } = user.data;
-
   return (
     <div className='SideBar'>
       <ul className='SideBar__list'>
         {links.map((link, index) => (
+          <Link className='SideBar__list--item' key={index} to={link.to}>
+            <SvgIcon>{link.icon}</SvgIcon>
+            <span>{link.label}</span>
+          </Link>
+        ))}
+      </ul>
+
+      <ul className='SideBar__list'>
+        {userLinks.map((link, index) => (
           <Link className='SideBar__list--item' key={index} to={link.to}>
             <SvgIcon>{link.icon}</SvgIcon>
             <span>{link.label}</span>
