@@ -7,16 +7,16 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { isTrackSaved, removeTrack, saveTrack } from '../../API/routes/tracks';
 import { Track } from '../../types';
 import { millisToMinutesAndSeconds } from '../../helpers';
-
-import Cover from '../Cover';
-import { currentlyPlaying, playSong } from '../../API/routes/player';
 import { SpotifyContext } from '../../context';
 
+import Cover from '../Cover';
+
 interface TrackListItemProps {
+  order?: number | null;
   track: Track;
 }
 
-const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
+const TrackListItem: React.FC<TrackListItemProps> = ({ order, track }) => {
   const [trackSaved, setTrackSaved] = useState<boolean>(false);
 
   async function checkIfTrackIsSaved() {
@@ -54,7 +54,11 @@ const TrackListItem: React.FC<TrackListItemProps> = ({ track }) => {
   return (
     <div className='TrackListItem' onClick={handleTrackListItemClick}>
       <div className='TrackListItem__details'>
-        <Cover size='small' square src={track.album.images[0].url} />
+        {order && <span>{order}</span>}
+
+        {track.album && (
+          <Cover size='small' square src={track.album.images[0].url} />
+        )}
 
         <div className='TrackListItem__details__text'>
           <div className='TrackListItem__details__text__song-name'>

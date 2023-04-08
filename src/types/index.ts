@@ -35,6 +35,11 @@ export interface Album {
   tracks: {
     href: string;
     items: Track[];
+    limit: number;
+    next: string | null;
+    offset: number;
+    previous: string | null;
+    total: number;
   };
   type: string; // todo: create type enum?
   uri: string;
