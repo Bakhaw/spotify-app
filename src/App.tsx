@@ -1,7 +1,12 @@
+import ContextProvider from './context';
 import Router from './router';
 
 function App() {
-  return <Router />;
+  return (
+    <ContextProvider>
+      <Router />
+    </ContextProvider>
+  );
 }
 
 export default App;

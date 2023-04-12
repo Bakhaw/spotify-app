@@ -1,0 +1,38 @@
+.SideBar {
+  height: auto;
+  width: 220px;
+  height: 100vh;
+  background: #060606;
+  position: absolute;
+  left: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 220px;
+    padding: 12px;
+
+    &--item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+      color: #bfbfbf;
+
+      svg {
+        color: #bfbfbf;
+      }
+
+      &:hover {
+        color: #fff;
+
+        svg {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

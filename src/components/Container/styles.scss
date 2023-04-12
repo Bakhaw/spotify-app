@@ -1,0 +1,9 @@
+.Container {
+  margin-left: 220px; // 220px SideBar width, so the content starts right after
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &__content {
+    padding: 40px 0;
+  }
+}

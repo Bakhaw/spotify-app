@@ -1,0 +1,27 @@
+.AlbumDetails {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 40px;
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &--type {
+      text-transform: capitalize;
+    }
+
+    &--album-name {
+      font-size: 52px;
+      font-family: 'GothamBold';
+      margin-bottom: 40px;
+    }
+
+    &--metas {
+      display: flex;
+      gap: 8px;
+    }
+  }
+}

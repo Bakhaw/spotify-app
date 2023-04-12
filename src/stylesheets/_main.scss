@@ -1,0 +1,47 @@
+* {
+  // font-family: 'GothaBolder';
+  // font-family: 'GothamBold';
+  font-family: 'GothamMedium';
+  // font-family: 'GothamLight';
+  // font-family: 'GothamLighter';
+  letter-spacing: -0.2px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: #111112;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+span {
+  display: block;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+svg {
+  color: #fff;
+}
+
+// "swiper" package overrides
+.swiper {
+  padding: 0 40px;
+}
+
+.swiper-slide {
+  width: 200px !important; // override swiper default width to make it match the artist Cover width
+}

@@ -1,13 +1,10 @@
 import axios from 'axios';
-import { AccessToken, Album } from '../../types';
+import { Album } from '../../types';
 
 import config from '../config';
 
-export async function fetchAlbum(
-  albumID: Album['id'],
-  accessToken: AccessToken
-) {
-  const url = `${config.PROXY_BASE_URL}/albums/${albumID}/?access_token=${accessToken}`;
+export async function fetchAlbum(albumID: Album['id']): Promise<Album> {
+  const url = `${config.PROXY_BASE_URL}/albums/${albumID}?access_token=${config.ACCESS_TOKEN}`;
 
   const { data } = await axios.get(url);
 

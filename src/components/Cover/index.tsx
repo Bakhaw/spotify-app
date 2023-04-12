@@ -1,15 +1,30 @@
+import classNames from 'classnames';
+
 interface CoverProps {
-  radius: string;
-  url: string;
-  width: string;
+  rounded?: boolean;
+  size?: 'small' | 'medium' | 'large'; // default: "medium"
+  square?: boolean; // removes border-radius
+  src: string;
 }
 
-const Cover: React.FC<CoverProps> = ({ radius, url, width }) => {
+const Cover: React.FC<CoverProps> = ({
+  rounded,
+  size = 'medium',
+  square,
+  src,
+}) => {
+  const srcFallback = 'https://placehold.co/600x400/060606/bfbfbf?text=?';
+
   return (
     <img
       alt='Cover'
-      className={`h-full w-[${width}] max-w-none rounded-${radius} shadow-md object-cover`}
-      src={url}
+      className={classNames(
+        'Cover',
+        `Cover--${size}`,
+        rounded && 'Cover--rounded',
+        square && 'Cover--square'
+      )}
+      src={src ?? srcFallback}
     />
   );
 };

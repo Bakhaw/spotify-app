@@ -1,0 +1,12 @@
+.ArtistDetails {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__avatar {
+      border-radius: 999px;
+    }
+  }
+}

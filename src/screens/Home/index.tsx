@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
-import AuthorizeUser from './AuthorizeUser';
-import TopArtists from './TopArtists';
+import Container from '../../components/Container';
+
+import TopArtists from '../../components/TopArtists';
+import TopTracks from '../../components/TopTracks';
+import { TimeRange } from '../../types';
+
+import Login from './Login';
 
 function Home() {
   const [isUserLogged, setIsUserLogged] = useState(
@@ -13,8 +18,19 @@ function Home() {
   }, []);
 
   return (
-    <div className='h-screen'>
-      {isUserLogged ? <TopArtists /> : <AuthorizeUser />}
+    <div className='Home'>
+      {isUserLogged ? (
+        <Container>
+          <div className='Home__container'>
+            <TopArtists timeRange={TimeRange.shortTerm} />
+            <div className='Mostly-Played'>
+              <TopTracks timeRange={TimeRange.shortTerm} />
+            </div>
+          </div>
+        </Container>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }

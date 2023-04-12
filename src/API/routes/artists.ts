@@ -1,15 +1,17 @@
 import axios from 'axios';
-import { AccessToken, Artist } from '../../types';
+import { AlbumType, ApiResponse, Artist } from '../../types';
 
 import config from '../config';
 
 export async function fetchArtistInfos(
-  artistID: Artist['id'],
-  accessToken: AccessToken
-) {
-  if (!artistID) return console.log('Missing Artist ID');
+  artistID: Artist['id']
+): Promise<ApiResponse<Artist> | null> {
+  if (!artistID) {
+    console.log('Missing Artist ID');
+    return null;
+  }
 
-  const url = `${config.PROXY_BASE_URL}/artists/${artistID}/?access_token=${accessToken}`;
+  const url = `${config.PROXY_BASE_URL}/artists/${artistID}/?access_token=${config.ACCESS_TOKEN}`;
 
   const { data } = await axios.get(url);
 
@@ -20,13 +22,13 @@ export async function fetchArtistInfos(
 
 export async function fetchArtistAlbums(
   artistID: Artist['id'],
-  accessToken: AccessToken
+  albumType: string
 ) {
-  const url = `${config.PROXY_BASE_URL}/artists/${artistID}/albums/?access_token=${accessToken}`;
+  const url = `${config.PROXY_BASE_URL}/artists/${artistID}/albums/?album_type=${albumType}&access_token=${config.ACCESS_TOKEN}`;
 
   const { data } = await axios.get(url);
 
-  // console.log('Artist Albums:', data);
+  console.log('Artist Albums:', data);
 
   return data;
 }

@@ -1,0 +1,49 @@
+.TrackListItem {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  padding: 0 12px;
+  height: 60px;
+  width: 100%;
+  overflow: hidden;
+  background: #18181c;
+  color: #a5a5a5;
+  transition: 0.3s;
+
+  &:hover {
+    background: #606066;
+    transition: 0.2s;
+    color: #fff;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      width: 300px;
+
+      &__song-name {
+        color: #fff;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-right: 10px;
+  }
+}

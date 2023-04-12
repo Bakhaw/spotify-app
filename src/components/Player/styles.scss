@@ -1,0 +1,41 @@
+.Player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #060606;
+  z-index: 99999;
+  height: 70px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  &__current-track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 40px;
+
+    &__left,
+    &__center,
+    &__right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 100%;
+    }
+
+    &__left {
+      justify-content: flex-start;
+    }
+
+    &__center {
+      justify-content: center;
+    }
+
+    &__right {
+      justify-content: flex-end;
+    }
+  }
+}
