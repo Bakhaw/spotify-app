@@ -40,6 +40,8 @@ const ContextProvider: React.FC<ContextProviderProps> = ({ children }) => {
   const [progressMs, setProgressMs] = useState<number>(0);
 
   function updateGlobalState(data: CurrentlyPlaying) {
+    if (!data) return;
+
     setCurrentTrack(data.item);
     setIsPlaying(data.is_playing);
     setProgressMs(data.progress_ms);
