@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IconButton from '@mui/material/IconButton';
@@ -28,7 +29,7 @@ const TrackListItem: React.FC<TrackListItemProps> = ({
     if (!track) return;
 
     const newTrackSaved = await isTrackSaved([track.id]);
-    setTrackSaved(newTrackSaved.data[0]);
+    setTrackSaved(newTrackSaved.data?.[0]);
   }
 
   async function onFavoriteButtonClick() {
@@ -57,19 +58,24 @@ const TrackListItem: React.FC<TrackListItemProps> = ({
   }
 
   return (
-    <div className='TrackListItem' onClick={handleTrackListItemClick}>
+    <div className='TrackListItem' onDoubleClick={handleTrackListItemClick}>
       <div className='TrackListItem__details'>
         {order && <span>{order}</span>}
 
         {showCover && (
-          <Cover size='small' square src={track.album.images[0].url} />
+          <Cover size='small' square src={track.album?.images?.[0]?.url} />
         )}
 
         <div className='TrackListItem__details__text'>
           <div className='TrackListItem__details__text__song-name'>
             {track.name}
           </div>
-          <div>{track.artists[0].name}</div>
+          <Link
+            className='TrackListItem__details__text__artist-name'
+            to={`/artist/${track.artists[0].id}`}
+          >
+            {track.artists[0].name}
+          </Link>
         </div>
       </div>
 

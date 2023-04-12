@@ -55,7 +55,7 @@ const PlaylistDetails: React.FC = () => {
           </div>
         </div>
 
-        <TrackList showOrder tracks={currentPlaylist.tracks} />
+        <TrackList showCover tracks={currentPlaylist.tracks} />
       </div>
     </Container>
   );

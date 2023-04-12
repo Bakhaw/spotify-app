@@ -3,6 +3,12 @@ import axios from 'axios';
 import config from '../config';
 import { Album, CurrentlyPlaying, Track } from '../../types';
 
+type PlaySongParams = {
+  contextUri?: Album['uri'];
+  positionMs?: CurrentlyPlaying['progress_ms'];
+  uris?: Track['uri'];
+};
+
 export async function recentlyPlayed() {
   const url = `${config.PROXY_BASE_URL}/player/recent?access_token=${config.ACCESS_TOKEN}`;
 
@@ -23,14 +29,8 @@ export async function currentlyPlaying() {
   return data;
 }
 
-type PlaySongParams = {
-  contextUri?: Album['uri'];
-  positionMs?: CurrentlyPlaying['progress_ms'];
-  uris?: Track['uri'];
-};
 export async function playSong(options?: PlaySongParams) {
   if (options) {
-    console.log('options????', options);
     const { contextUri, positionMs, uris } = options;
     const url = `${config.PROXY_BASE_URL}/player/play?context_uri=${contextUri}&position_ms=${positionMs}&uris=${uris}&access_token=${config.ACCESS_TOKEN}`;
 

@@ -20,7 +20,7 @@ export async function fetchPlaylistById(playlistId?: Playlist['id']) {
 
   const { data } = await axios.get(url);
 
-  // console.log('Playlist by ID:', data);
+  console.log('Playlist by ID:', data);
 
   return data;
 }
