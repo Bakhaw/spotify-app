@@ -2,6 +2,7 @@ const {
   REACT_APP_APP_URL_DEV,
   REACT_APP_APP_URL_PROD,
   REACT_APP_PROXY_URL_DEV,
+  REACT_APP_PROXY_URL_PROD,
   REACT_APP_SPOTIFY_CLIENT_ID,
   NODE_ENV,
 } = process.env;
@@ -25,7 +26,10 @@ const authorizeAuthURL =
 
 const config = {
   AUTHORIZE_AUTH_URL: authorizeAuthURL,
-  PROXY_BASE_URL: REACT_APP_PROXY_URL_DEV, // todo change URL in production mode
+  PROXY_BASE_URL:
+    NODE_ENV === 'development'
+      ? REACT_APP_PROXY_URL_DEV
+      : REACT_APP_PROXY_URL_PROD, // todo change URL in production mode
   ACCESS_TOKEN: localStorage.getItem('SPOTIFY_ACCESS_TOKEN'),
   REFRESH_TOKEN: localStorage.getItem('SPOTIFY_REFRESH_TOKEN'),
 };
